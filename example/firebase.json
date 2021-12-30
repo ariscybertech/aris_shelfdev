@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "web_app/build",
+    "ignore": [
+      "**/.*"
+    ],
+    "rewrites": [
+      {
+        "source": "/api",
+        "run": {
+          "serviceId": "api-service-name",
+          "region": "us-central1"
+        }
+      }
+    ]
+  }
+}

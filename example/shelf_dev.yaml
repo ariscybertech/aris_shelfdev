@@ -1,0 +1,22 @@
+# https://github.com/kevmoo/shelf_dev/
+
+# Allow the user to specify the "root" port to listen on
+# Default to 8080
+# TODO: throw if there are conflicts with other things
+# port: 8080
+
+web-app:
+  path: web_app
+  # commands that start with `pub` or `dart` are rewritten to ensure it's the
+  # version corresponding to install invoking `shelf-dev`
+  command: pub run build_runner serve web:{PORT}
+
+# May want to support `web-serverS` at some point. But KISS for now.
+web-server:
+  # relative path: relative to shelf_dev.yaml file
+  path: web_server
+  command: dart bin/server.dart --port {PORT}
+  # following along at
+  # https://firebase.google.com/docs/hosting/full-config#rewrite-cloud-run-container
+  # **assuming** this contains anything here and below!
+  source: api
